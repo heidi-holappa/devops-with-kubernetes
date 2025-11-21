@@ -1,0 +1,17 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+
+servers: 1
+agents: 0
+
+volumes:
+  - volume: /home/holaphei/repos/devops-with-kubernetes/ex-1-2/todo.app/good-resolv.conf:/etc/k3d/resolv.conf
+    nodeFilters:
+      - server:*
+
+options:
+  k3s:
+    extraArgs:
+      - arg: "--kubelet-arg=resolv-conf=/etc/k3d/resolv.conf"
+        nodeFilters:
+          - server:*
