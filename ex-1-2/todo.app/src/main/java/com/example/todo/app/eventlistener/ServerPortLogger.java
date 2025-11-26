@@ -1,7 +1,7 @@
 package com.example.todo.app.eventlistener;
 
 import org.springframework.boot.context.event.ApplicationStartedEvent;
-import org.springframework.boot.web.context.WebServerApplicationContext;
+import org.springframework.boot.web.server.context.WebServerApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ class ServerPortLogger {
     }
 
     @EventListener(ApplicationStartedEvent.class)
-    public void logPort() {
+    public void logPort() throws NullPointerException {
         int port = context.getWebServer().getPort();
         System.out.println("Server port: " + port);
     }
