@@ -18,5 +18,6 @@ class ServerPortLogger {
     public void logPort() throws NullPointerException {
         int port = context.getWebServer().getPort();
         System.out.println("Server port: " + port);
+        System.out.println("Using updated image");
     }
 }
