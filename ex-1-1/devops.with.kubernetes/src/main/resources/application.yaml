@@ -2,4 +2,4 @@ spring:
   application:
     name: devops.with.kubernetes
 server:
-  port: 8122
+  port: ${SERVER_PORT:8080}
