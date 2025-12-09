@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: pong
+server:
+  port: ${PONG_PORT:8088}
