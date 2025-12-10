@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output
+  template:
+    metadata:
+      labels:
+        app: log-output
+    spec:
+      volumes: # Define volume
+        - name: logs
+          emptyDir: {}
+      containers:
+        - name: log-reader
+          image: rainbowdazed/log-reader:latest
+          volumeMounts: # Mount volume
+            - name: logs
+              mountPath: /shared
+        - name: log-writer
+          image: rainbowdazed/log-writer:latest
+          volumeMounts: # Mount volume
+            - name: logs
+              mountPath: /shared
