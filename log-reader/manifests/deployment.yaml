@@ -12,17 +12,18 @@ spec:
       labels:
         app: log-output
     spec:
-      volumes: # Define volume
-        - name: logs
-          emptyDir: {}
+      volumes:
+        - name: shared-log
+          persistentVolumeClaim:
+            claimName: log-claim
       containers:
         - name: log-reader
           image: rainbowdazed/log-reader:latest
           volumeMounts: # Mount volume
-            - name: logs
+            - name: shared-log
               mountPath: /shared
         - name: log-writer
           image: rainbowdazed/log-writer:latest
           volumeMounts: # Mount volume
-            - name: logs
+            - name: shared-log
               mountPath: /shared
