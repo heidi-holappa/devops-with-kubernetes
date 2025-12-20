@@ -1,10 +1,10 @@
 package fi.holappa.pong.metric;
 
-public class PongMetric {
+public class PongCounter {
 
     private int pongMetric;
 
-    public PongMetric() {
+    public PongCounter() {
         this.pongMetric = 0;
     }
 
